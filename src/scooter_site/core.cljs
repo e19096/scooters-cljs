@@ -5,8 +5,13 @@
 ;; -------------------------
 ;; Views
 
+(defn product-index []
+  [:div "THIS IS THE PRODUCT INDEX"])
+
+
 (defn home-page []
-  [:div [:h2 "Welcome to Reagent"]])
+  [:div [:h2 "Welcome to Reagent"]
+        [product-index]])
 
 ;; -------------------------
 ;; Initialize app
