@@ -1,17 +1,15 @@
 (ns scooter-site.core
     (:require
-      [reagent.core :as r]))
+      [reagent.core :as r]
+      [scooter-site.components.products :as prod]))
 
 ;; -------------------------
 ;; Views
 
-(defn product-index []
-  [:div "THIS IS THE PRODUCT INDEX"])
-
 
 (defn home-page []
   [:div [:h2 "Welcome to Reagent"]
-        [product-index]])
+        [prod/product-index]])
 
 ;; -------------------------
 ;; Initialize app
