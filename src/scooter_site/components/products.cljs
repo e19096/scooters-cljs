@@ -5,12 +5,13 @@
 (defonce cart-count (r/atom 0))
 
 (defn product-item [product]
-  (let [{:keys [name price image]} product]
+  (let [{:keys [name price image] :as scooter} product]
     [:div {:class "prod-item"}
          [:img {:src image}]
          [:div {:class "details"}
                [:div name]
-               [:div price]
+               [:div (-> scooter :price :currency-symbol)
+                     (-> scooter :price :value)]
                [:button {:on-click #(swap! cart-count inc)}
                         "Add"]]
      ]))
