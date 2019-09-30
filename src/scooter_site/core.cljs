@@ -17,12 +17,16 @@
         @cart-count [:i {:class "material-icons"} "shopping_cart"]])
 
 (defn scooter->style [scooter]
-  (if (clojure.string/includes? (:name scooter) "Red")
+  (if (str/includes? (:name scooter) "Red")
     {:color "red"}
     (cond
       (clojure.string/includes? (:name scooter) "Purple") {:color "mediumpurple"}
       (= (:name scooter) "Seat Scooter") {:border "2px dotted hotpink"}
-      :else {})))
+      :else (cond-> {}
+              (str/includes? (:name scooter) "Turbo") (assoc :background "limegreen")
+              false (assoc :color "limegreen")
+              true (assoc :display "none")
+              (> (get-in scooter [:price :value]) 2000) (assoc :font-weight "bolder")))))
 
 (defn red-scooter-style [scooter-name]
   (when (clojure.string/includes? scooter-name "Red")
